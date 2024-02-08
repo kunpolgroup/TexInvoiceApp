@@ -113,7 +113,7 @@ function Login() {
             onClick={handleSignIn}
           >
             <Typography variant="h5" color="white">
-              เข้าสู่ระบบ 3
+              เข้าสู่ระบบ
             </Typography>
           </Button>
 
