@@ -254,14 +254,21 @@ const CreateInvoice = () => {
 
   const calculatePruePrice = () => {
     const subtotal = calculateTotalAmount();
-    return (subtotal * 100) / 107;
+    const pruePrice = calculateVAT();
+    return subtotal - pruePrice;
   };
+
 
   const calculateVAT = () => {
     const subtotal = calculateTotalAmount();
-    const pruePrice = calculatePruePrice();
-    return subtotal - pruePrice;
+
+    console.log(subtotal)
+    return (subtotal * 0.07) 
+
   };
+
+  console.log(Number(calculateVAT()))
+  console.log(Number(calculateTotalAmount()))
 
   const calculateTotalUnit = () => {
     let subtotal = 0;
@@ -272,11 +279,7 @@ const CreateInvoice = () => {
     });
     return subtotal;
   };
-  // console.log(selectedShop);
 
-  console.log(Number(calculatePruePrice().toFixed(2)))
-  console.log(Number(calculateVAT().toFixed(2)))
-  console.log(calculateTotalUnit().toFixed(2))
 
 
   const [dataReceipt, setDataReceipt] = useState("");

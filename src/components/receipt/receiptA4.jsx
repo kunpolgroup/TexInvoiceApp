@@ -340,16 +340,15 @@ export const ReceiptA4 = ({
     return pages;
   };
 
-  const pages = generatePages(dataReceipt.product_data);
+  const pages = generatePages(dataReceipt?.product_data);
 
   // แปลงเวลา //
-  const formattedDateTime = moment(dataReceipt.created_at).format(
+  const formattedDateTime = moment(dataReceipt?.created_at).format(
     "DD/MM/YYYY "
   );
 
   return (
     <Dialog open={openModalReceiptA4} handler={handleModalReceiptA4} size="xl" >
-      <DialogHeader></DialogHeader>
       <DialogBody>
         {/* <Page size={[842, 595]} style={styles.page}> */}
         {/*  9 x 11 นิ้ว (792 คือ 9 นิ้ว x 72 คือ DPI, 936 คือ 11 นิ้ว x 72 คือ DPI) */}
@@ -536,7 +535,8 @@ export const ReceiptA4 = ({
                           </Text>
                           <Text style={styles.tableCell6}>
                             {"   "}
-                            {Number(item?.totalPrice).toLocaleString() || ""}
+                            {Number(item?.totalPrice).toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || ""}
                           </Text>
                         </View>
                       );

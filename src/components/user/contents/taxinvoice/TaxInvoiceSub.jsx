@@ -134,7 +134,7 @@ function TaxInvoiceSub() {
     ? listData.slice(startIndex, endIndex)
     : [];
 
-  const totalPages = Math.ceil(listData.length / itemsPerPage);
+  const totalPages = Math.ceil(listData?.length / itemsPerPage);
 
   //------------- modal View Product -----------------------//
   const [openModalView, setOpenModalView] = useState(false);

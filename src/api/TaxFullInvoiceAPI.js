@@ -25,6 +25,7 @@ export const getFullInvoice = async (searchQuery, sendShop) => {
 };
 
 export const addFullInvioce = async (data, setOpenPrint) => {
+  console.log(data)
   try {
     let Token = localStorage.getItem("Token");
     const response = await axios.post(

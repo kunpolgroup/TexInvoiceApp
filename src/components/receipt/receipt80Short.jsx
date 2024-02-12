@@ -291,7 +291,7 @@ import {
       },
     tableCell1: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -307,7 +307,7 @@ import {
     },
     tableCell3: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -315,7 +315,7 @@ import {
     },
     tableCell4: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)

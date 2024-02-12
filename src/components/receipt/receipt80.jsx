@@ -293,7 +293,7 @@ import {
       },
     tableCell1: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -301,7 +301,7 @@ import {
     },
     tableCell2: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       textOverflow:'ellipsis',
@@ -311,7 +311,7 @@ import {
     },
     tableCell3: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "27%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -319,7 +319,7 @@ import {
     },
     tableCell4: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -519,7 +519,7 @@ import {
                             </Text>
                             <Text style={styles.tableCell4}>
                               {" "}
-                              {Number(item?.totalPrice).toLocaleString() ||""}
+                              {Number(item?.totalPrice).toLocaleString() ||""} 
                             </Text>
                           </View>
                         );
