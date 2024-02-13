@@ -237,49 +237,42 @@ const CreateInvoice = () => {
 
   // console.log(data);
 
-  // ฟังก์ชันคำนวณรวมเงิน
-  const calculateTotal = (quantity, pricePerUnit) => {
-    return isNaN(quantity) || isNaN(pricePerUnit) ? 0 : quantity * pricePerUnit;
-  };
 
-  const calculateTotalAmount = () => {
-    let subtotal = 0;
-    data.forEach((item) => {
-      if (!isNaN(item.totalPrice)) {
-        subtotal += item.totalPrice;
-      }
-    });
-    return subtotal;
-  };
+ // ฟังก์ชันคำนวณรวมเงิน
+ const calculateTotal = (quantity, pricePerUnit) => {
+  return isNaN(quantity) || isNaN(pricePerUnit) ? 0 : quantity * pricePerUnit;
+};
 
-  const calculatePruePrice = () => {
-    const subtotal = calculateTotalAmount();
-    const pruePrice = calculateVAT();
-    return subtotal - pruePrice;
-  };
+const calculateTotalAmount = () => {
+  let subtotal = 0;
+  data.forEach((item) => {
+    if (!isNaN(item.totalPrice)) {
+      subtotal += item.totalPrice;
+    }
+  });
+  return subtotal;
+};
 
+const calculatePruePrice = () => {
+  const subtotal = calculateTotalAmount();
+  return (subtotal / 1.07);
+};
 
-  const calculateVAT = () => {
-    const subtotal = calculateTotalAmount();
+const calculateVAT = () => {
+  const subtotal = calculateTotalAmount();
+  const pruePrice = calculatePruePrice();
+  return subtotal - pruePrice;
+};
 
-    console.log(subtotal)
-    return (subtotal * 0.07) 
-
-  };
-
-  console.log(Number(calculateVAT()))
-  console.log(Number(calculateTotalAmount()))
-
-  const calculateTotalUnit = () => {
-    let subtotal = 0;
-    data.forEach((item) => {
-      if (!isNaN(item.quantity)) {
-        subtotal += item.quantity;
-      }
-    });
-    return subtotal;
-  };
-
+const calculateTotalUnit = () => {
+  let subtotal = 0;
+  data.forEach((item) => {
+    if (!isNaN(item.quantity)) {
+      subtotal += item.quantity;
+    }
+  });
+  return subtotal;
+};
 
 
   const [dataReceipt, setDataReceipt] = useState("");

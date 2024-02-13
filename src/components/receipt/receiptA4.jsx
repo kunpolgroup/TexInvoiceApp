@@ -531,7 +531,8 @@ export const ReceiptA4 = ({
                           </Text>
                           <Text style={styles.tableCell5}>
                             {"    "}
-                            {Number(item?.pricePerUnit).toLocaleString() || ""}
+                            {Number(item?.pricePerUnit).toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || ""}
                           </Text>
                           <Text style={styles.tableCell6}>
                             {"   "}
