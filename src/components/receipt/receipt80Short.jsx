@@ -235,7 +235,7 @@ import {
     },
     tableCell1Head: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 8,
       padding: 5,
       borderWidth: 1,
       borderTop:'1',
@@ -249,7 +249,7 @@ import {
     },
     tableCell2Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 8,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -263,7 +263,7 @@ import {
       },
       tableCell3Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 8,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -277,7 +277,7 @@ import {
       },
       tableCell4Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 8,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -294,31 +294,32 @@ import {
       fontSize: 9,
       padding: 5,
       textAlign: "center",
-      width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "5%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCell2: {
       margin: "auto",
-      fontSize: 10,
-      padding: 5,
+      fontSize: 8,
+      marginTop:5,
+      // padding: 5,
       textAlign: "center",
-      width: "53%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-      height: "auto",
+      width: "44%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      height: "100%",
     },
     tableCell3: {
       margin: "auto",
-      fontSize: 9,
+      fontSize: 8,
       padding: 5,
       textAlign: "center",
-      width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "25%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCell4: {
       margin: "auto",
-      fontSize: 9,
+      fontSize: 8,
       padding: 5,
       textAlign: "center",
-      width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "25%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCellRowsum: {
@@ -500,17 +501,25 @@ import {
                             {Number(item?.quantity).toLocaleString() || ""}{" "}
                             </Text>
                             <Text
-                              style={[styles.tableCell2, { textAlign: "left" , marginLeft:'20px', marginRight:'-12px'  }]}
+                              // 
+                              style={[styles.tableCell2, { textAlign: "left" , marginLeft:'20px',
+                              overflow: 'hidden',
+                              wordWrap: 'break-word',
+                               }]}
                             >
-                              {`${item?.product || ''} `} {''}
+                              {`${item?.product || ''} `} {'   '}
                             </Text>
                             <Text style={styles.tableCell3}>
                               {" "}
-                              {Number(item?.pricePerUnit).toLocaleString() || ""} {" "}
+                              {/* {Number(item?.pricePerUnit) .toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || ""} {"     "} */}
+                              {Number(item?.pricePerUnit).toLocaleString() || ""} {"     "}
                             </Text>
                             <Text style={styles.tableCell4}>
                               {" "}
-                              {Number(item?.totalPrice).toLocaleString() ||""} {''}
+                              {/* {Number(item?.totalPrice) .toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || ""} {'   '} */}
+                              {Number(item?.totalPrice).toLocaleString() || ""} {'   '}
                             </Text>
                           </View>
                         );
@@ -525,8 +534,10 @@ import {
                             {/* สรุปรวม */}
                           <View View style={[styles.flexrowbetween , styles.mt10]}>
                             <Text style={styles.text10}> รวมเป็นเงิน </Text>
-                            <Text style={styles.text10}>
-                              {Number(dataReceipt?.total_amount).toLocaleString()} {''}
+                            <Text style={[styles.text10 , { textAlign: "left" , marginRight:'-11px',
+                               }]}>
+                              {Number(dataReceipt?.total_amount).toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || ""} {'    '}
                             </Text>
                           </View>
                           <View View style={[styles.flexrowbetween , styles.mt5]}>
@@ -537,8 +548,10 @@ import {
                           </View>
                           <View View style={[styles.flexrowbetween , styles.mt5 , styles.borderB]}>
                             <Text style={styles.text12}> รวมทั้งสิ้น </Text>
-                            <Text style={styles.text12}>
-                            {Number(dataReceipt?.total_amount).toLocaleString()} {''}
+                            <Text style={[styles.text12 , { textAlign: "left" , marginRight:'-15px',
+                               }]}>
+                            {Number(dataReceipt?.total_amount).toFixed(2)
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "  "} {'     '}
                             </Text>
                           </View>
                           <View View style={[styles.flexrowbetween , styles.mt5]}>

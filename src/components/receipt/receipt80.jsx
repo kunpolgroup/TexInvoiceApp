@@ -237,7 +237,7 @@ import {
     },
     tableCell1Head: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       borderWidth: 1,
       borderTop:'1',
@@ -246,12 +246,12 @@ import {
       borderBottom:'1',
       borderColor: "#000",
       textAlign: "center",
-      width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "5%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCell2Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 9,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -265,7 +265,7 @@ import {
       },
       tableCell3Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 9,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -279,7 +279,7 @@ import {
       },
       tableCell4Head: {
         margin: "auto",
-        fontSize: 10,
+        fontSize: 9,
         padding: 5,
         borderWidth: 1,
         borderTop:'1',
@@ -294,32 +294,33 @@ import {
     tableCell1: {
       margin: "auto",
       fontSize: 9,
-      padding: 5,
+      paddingTop:5,
+      paddingLeft: 10,
       textAlign: "center",
-      width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "5%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCell2: {
       margin: "auto",
-      fontSize: 9,
+      fontSize: 8,
       padding: 5,
       textAlign: "center",
-      textOverflow:'ellipsis',
-      wordBreak: "break-word",
-      width: "45%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-      height: "auto",
+      // textOverflow:'ellipsis',
+      // wordBreak: "break-word",
+      width: "50%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      height: "100%",
     },
     tableCell3: {
       margin: "auto",
-      fontSize: 9,
+      fontSize: 8,
       padding: 5,
       textAlign: "center",
-      width: "27%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      width: "25%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
     },
     tableCell4: {
       margin: "auto",
-      fontSize: 9,
+      fontSize: 8,
       padding: 5,
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
@@ -327,7 +328,7 @@ import {
     },
     tableCellRowsum: {
       margin: "auto",
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       borderWidth: 1,
       borderTopWidth: 1,
@@ -440,6 +441,7 @@ import {
               {pages.map((pageData, index) => (
                 <Page key={index} size={[295 ]} style={styles.page} > 
                 {/*  <Page key={index} size='B7' style={styles.page} >  */}
+                <View>
                   <View>
                     <Text style={[styles.flexrowcenter, styles.text12]}>
                       {companyLoginDataStore?.company}  {''}
@@ -460,6 +462,7 @@ import {
                       เลขประจำตัวผู้เสียภาษี {companyLoginDataStore?.tax_personal}  โทรศัพท์ {companyLoginDataStore?.tel}    {''}
                     </Text>
                   </View>
+                </View>
                   <View>
                     <Text
                       style={[styles.flexrowcenter, styles.text10, styles.mt10]}

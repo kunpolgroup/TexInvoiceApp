@@ -224,38 +224,39 @@ const styles = StyleSheet.create({
   },
   tableCell2: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "41%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-    height: "auto",
+    width: "46%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    height: "100%",
   },
 
   tableCell3: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell4: {
     margin: "auto",
-    fontSize: 10,
-    padding: 5,
+    fontSize: 9,
+    // padding: 5,
+    paddingTop: 5,
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "8%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell5: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderColor: "#000",
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
   },
   tableCell6: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderColor: "#000",
@@ -275,7 +276,7 @@ const styles = StyleSheet.create({
   },
   tableCellRowsum: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderTopWidth: 1,
@@ -286,7 +287,7 @@ const styles = StyleSheet.create({
   },
   tableCellNote: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderTopWidth: 1,
@@ -300,7 +301,7 @@ const styles = StyleSheet.create({
   },
   tableCellNoteBorder: {
     margin: "auto",
-    fontSize: 10,
+    fontSize: 9,
     padding: 5,
     borderWidth: 1,
     borderTopWidth: 1,
@@ -516,13 +517,11 @@ export const ReceiptA4 = ({
                           <Text style={styles.tableCell1}>
                             {item?.index || "  "}
                           </Text>
-                          
                           <Text 
                             style={[styles.tableCell2, { textAlign: "left"}]}
                           > 
                             {item?.product || ""} {"   "}
                           </Text>
-                       
                           <Text style={styles.tableCell3}>
                             {" "}
                             {item?.quantity || ""}
