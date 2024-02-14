@@ -516,13 +516,13 @@ export const ReceiptA4 = ({
                           <Text style={styles.tableCell1}>
                             {item?.index || "  "}
                           </Text>
-                          <View> 
+                          
                           <Text 
                             style={[styles.tableCell2, { textAlign: "left"}]}
                           > 
                             {item?.product || ""} {"   "}
                           </Text>
-                          </View>
+                       
                           <Text style={styles.tableCell3}>
                             {" "}
                             {item?.quantity || ""}
