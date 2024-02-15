@@ -520,11 +520,11 @@ export const ReceiptA4 = ({
                           <Text 
                             style={[styles.tableCell2, { textAlign: "left"}]}
                           > 
-                            {item?.product || ""} {"   "}
+                            {item?.product || "    "} {"          "}
                           </Text>
                           <Text style={styles.tableCell3}>
                             {" "}
-                            {item?.quantity || ""}
+                            {item?.quantity || "    "}
                           </Text>
                           <Text style={styles.tableCell4}>
                             {"   "}
