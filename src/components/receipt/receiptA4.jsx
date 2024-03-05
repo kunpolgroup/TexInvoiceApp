@@ -482,6 +482,7 @@ export const ReceiptA4 = ({
                           จุดขาย:{" "}
                           {dataReceipt?.salepoints_name ||
                             selectedShop?.salepoints_name ||
+                            selectedShop?.label ||
                             ""}{" "}
                           {""}
                         </Text>

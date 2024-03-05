@@ -48,6 +48,28 @@ export const addShortInvioce = async (data , setOpenPrint) => {
   }
 };
 
+
+export const editShortInvioce = async (data , setOpenPrint) => {
+  try {
+    let Token = localStorage.getItem("Token");
+    const response = await axios.put(
+      `${import.meta.env.VITE_APP_API}/inovicesh/editinvoicesh`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Token}`,
+        },
+      }
+    );
+    toast.success("สร้าง ใบกำกับภาษี(รูปแบบย่อย) สำเร็จ")
+    setOpenPrint(true)
+    return response.data.data;
+  } catch (error) {
+    toast.error("ไม่สามารถสร้าง ใบกำกับภาษี(รูปแบบย่อย) กรุณาลองอีกครั้ง ")
+  }
+};
+
 export const deleteShortInvoice = async (id , setToastOpen) => {
   try {
     let Token = localStorage.getItem("Token");

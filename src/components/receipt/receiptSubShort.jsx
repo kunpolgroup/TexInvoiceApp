@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
   flexrowbetween: {
     display: "flex",
     flexDirection: "row",
+    width:"103%",
     justifyContent: "space-between",
     wordBreak: "break-word",
   },
@@ -239,6 +240,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems:'center',
   },
+  tableRow1: {
+    margin: "auto",
+    display:'flex',
+    flexDirection: "row",
+    gap:2,
+    alignItems:'center',
+  },
   tableCell1Head: {
     margin: "auto",
     fontSize: 10,
@@ -250,7 +258,7 @@ const styles = StyleSheet.create({
     borderBottom:'1',
     borderColor: "#000",
     textAlign: "center",
-    width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell2Head: {
@@ -265,7 +273,7 @@ const styles = StyleSheet.create({
       borderColor: "#000",
       textAlign: "center",
       width: "53%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-      height: "auto",
+      height: "100%",
     },
     tableCell3Head: {
       margin: "auto",
@@ -299,14 +307,17 @@ const styles = StyleSheet.create({
       margin: "auto",
       fontSize: 10,
       padding: 5,
+      paddingRight: 0,
+      // backgroundColor:"#f3f",
       textAlign: "center",
-      width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-      height: "100%",
+      width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+      height: "auto",
     },
     tableCell2: {
       margin: "auto",
       fontSize: 10,
       padding: 5,
+      // backgroundColor:"#f3a",
       textAlign: "center",
       width: "53%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "auto",
@@ -315,6 +326,7 @@ const styles = StyleSheet.create({
       margin: "auto",
       fontSize: 10,
       padding: 5,
+      // backgroundColor:"#f3f",
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
@@ -323,6 +335,7 @@ const styles = StyleSheet.create({
       margin: "auto",
       fontSize: 10,
       padding: 5,
+      // backgroundColor:"#f3a",
       textAlign: "center",
       width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
       height: "100%",
@@ -482,7 +495,7 @@ export const ReceiptSubShort = ({
               </View>
                 <View>
                   <Text style={[styles.flexrow, styles.text10 , styles.mt5 ]}>
-                  จุดขาย: {dataView?.salepoints_name?.length > 1  ? dataView?.salepoints_name  : selectedShop?.salepoints_name }  {''}  
+                  จุดขาย: {dataView?.salepoints_name?.length > 1  ? dataView?.salepoints_name  : selectedShop?.salepoints_name || selectedShop?.label  }  {''}  
                   </Text>
                 </View>
                 <View>
@@ -506,11 +519,12 @@ export const ReceiptSubShort = ({
                     {pageData?.map((item, itemIndex) => {
                       return (
                         <>
-                        <View key={itemIndex} style={[styles.tableRow ]}>
+                        <View key={itemIndex} style={[styles.tableRow1 ]}>
                           <Text style={styles.tableCell1}>
-                            {item?.products_quantity  || ""}  {''}
+                            {`${item?.products_quantity} ` || ""}  {''}
                           </Text>
-                          <Text style={[styles.tableCell2, { textAlign: "left" , marginLeft:'20px', marginRight:'-12px'  }]}>
+                          {/* <Text style={[styles.tableCell2, { textAlign: "left" , marginLeft:'20px', marginRight:'-12px'  }]}> */}
+                          <Text style={[styles.tableCell2 ]}>
                             {" "}
                             {` ${item?.product_name}   `}  {''}
                           </Text>

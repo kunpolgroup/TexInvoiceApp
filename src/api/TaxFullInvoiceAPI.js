@@ -40,9 +40,32 @@ export const addFullInvioce = async (data, setOpenPrint) => {
     );
     toast.success("สร้าง ใบกำกับภาษี(รูปแบบเต็ม) สำเร็จ");
     setOpenPrint(true);
+    console.log(response.data)
     return response.data.data;
   } catch (error) {
     toast.error("ไม่สามารถสร้าง ใบกำกับภาษี(รูปแบบเต็ม) กรุณาลองอีกครั้ง ");
+  }
+};
+
+
+export const editFullInvioce = async (data, setOpenPrint) => {
+  try {
+    let Token = localStorage.getItem("Token");
+    const response = await axios.put(
+      `${import.meta.env.VITE_APP_API}/inovices/editinovices`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Token}`,
+        },
+      }
+    );
+    toast.success("แก้ไข ใบกำกับภาษี(รูปแบบเต็ม) สำเร็จ");
+    setOpenPrint(true);
+    return response.data.data;
+  } catch (error) {
+    toast.error("ไม่สามารถแก้ไข ใบกำกับภาษี(รูปแบบเต็ม) กรุณาลองอีกครั้ง ");
   }
 };
 
@@ -59,7 +82,7 @@ export const deleteFullInvoice = async (id, setToastOpen) => {
         },
       }
     );
-    // console.log(response.data)
+    console.log(response)
     toast.success("ลบใบกำกับภาษี(รูปแบบเต็ม) สำเร็จ");
     setToastOpen(true);
     return response.data;

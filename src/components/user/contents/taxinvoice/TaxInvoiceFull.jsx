@@ -28,7 +28,7 @@ import { useState, useEffect } from "react";
 import { AiFillDelete, AiOutlineStop } from "react-icons/ai";
 import { FaCheckCircle } from "react-icons/fa";
 
-import { BsFillEyeFill, BsPlusCircle } from "react-icons/bs";
+import { BsFillEyeFill, BsPlusCircle, BsPencilSquare } from "react-icons/bs";
 import { MdLocalPrintshop } from "react-icons/md";
 import { TbDoorEnter } from "react-icons/tb";
 
@@ -36,6 +36,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
   createInvoiceStore,
+  editInvoiceStore,
+  dataEditInvoiceStore,
   // productStore,
   // customerStore,
   headFormStore,
@@ -60,6 +62,10 @@ function TaxInvoiceFull() {
 
   const [openCreateInvoice, setOpenCreateInvoice] =
     useRecoilState(createInvoiceStore);
+  const [openEditInvoice, setOpenEditInvoice] =
+    useRecoilState(editInvoiceStore);
+  const [dataEditInvoice, setDataEditInvoice] =
+    useRecoilState(dataEditInvoiceStore);
   const shopDataStore = useRecoilValue(shopStore);
 
   const shopOptions = shopDataStore?.map((shop) => ({
@@ -110,7 +116,7 @@ function TaxInvoiceFull() {
 
   useEffect(() => {
     fetchFullInvioce();
-  }, [searchQuery, openCreateInvoice, sendShop]);
+  }, [searchQuery, openCreateInvoice , openEditInvoice, sendShop]);
 
   useEffect(() => {
     if (tokenError) {
@@ -148,6 +154,14 @@ function TaxInvoiceFull() {
     setOpenCreateInvoice(true);
   };
 
+  //------------- modal Edit Product -----------------------//
+
+  const handleModalEdit = (data) => {
+    setDataEditInvoice(data)
+    setHeadFormDataStore("1");
+    setOpenEditInvoice(true);
+  };
+
   //------------- modal Delete Product -----------------------//
 
   const [openModalDelete, setOpenModalDelete] = useState(false);
@@ -183,7 +197,7 @@ function TaxInvoiceFull() {
     setOpenModalReceipt80(!openModalReceipt80);
   };
 
-  console.log(dataView)
+  // console.log(dataView);
 
   return (
     <div className="w-full overflow-auto  px-3">
@@ -277,6 +291,15 @@ function TaxInvoiceFull() {
                       color="blue-gray"
                       className="font-bold leading-none opacity-70"
                     >
+                      แก้ไข
+                    </Typography>
+                  </th>
+                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 w-1">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-bold leading-none opacity-70"
+                    >
                       ลบ
                     </Typography>
                   </th>
@@ -335,6 +358,19 @@ function TaxInvoiceFull() {
                               onClick={() => handleModalView(data)}
                             >
                               <BsFillEyeFill className="h-5 w-5  text-light-blue-700 " />
+                            </IconButton>
+                          </div>
+                        </td>
+                        <td className={classes}>
+                          <div className="flex justify-center">
+                            <IconButton
+                              variant="outlined"
+                              color="amber"
+                              size="sm"
+                              className="ml-3 "
+                              onClick={() => handleModalEdit(data)}
+                            >
+                              <BsPencilSquare className="h-5 w-5 text-yellow-900" />
                             </IconButton>
                           </div>
                         </td>
@@ -471,7 +507,7 @@ function TaxInvoiceFull() {
               </Typography>
               <Card className="border px-2 h-[280px] overflow-auto">
                 <div className="mt-5 ">
-                  <table className="w-full min-w-max "  >
+                  <table className="w-full min-w-max ">
                     <thead>
                       <tr>
                         <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
@@ -646,7 +682,7 @@ function TaxInvoiceFull() {
           </div>
         </DialogBody>
         <DialogFooter divider>
-          <div className="flex gap-3 "> 
+          <div className="flex gap-3 ">
             <Menu className="text-base flex justify-center  items-center   ">
               <MenuHandler>
                 <Button

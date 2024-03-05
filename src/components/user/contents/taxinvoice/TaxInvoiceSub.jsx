@@ -25,13 +25,15 @@ import { useState, useEffect } from "react";
 import { AiFillDelete, AiOutlineStop } from "react-icons/ai";
 import { FaCheckCircle } from "react-icons/fa";
 
-import { BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle, BsPencilSquare } from "react-icons/bs";
 import { MdLocalPrintshop } from "react-icons/md";
 import { TbDoorEnter, TbCheckupList } from "react-icons/tb";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   createInvoiceStore,
+  editInvoiceStore,
+  dataEditInvoiceStore,
   // productStore,
   // customerStore,
   headFormStore,
@@ -60,6 +62,10 @@ function TaxInvoiceSub() {
   const [noData, setNoData] = useState(false);
   const [openCreateInvoice, setOpenCreateInvoice] =
     useRecoilState(createInvoiceStore);
+  const [openEditInvoice, setOpenEditInvoice] =
+    useRecoilState(editInvoiceStore);
+  const [dataEditInvoice, setDataEditInvoice] =
+    useRecoilState(dataEditInvoiceStore);
 
   const shopDataStore = useRecoilValue(shopStore);
 
@@ -70,6 +76,27 @@ function TaxInvoiceSub() {
 
   const [selectedShop, setSelectedShop] = useState(null);
   const [sendShop, setSendShop] = useState("");
+
+  // const handleShopSelect = (e) => {
+  //   // ตรวจสอบว่า e.value ไม่เป็น undefined หรือ null
+  //   if (e && e.value !== undefined && e.value !== null) {
+  //     // ค้นหาข้อมูลร้านที่ถูกเลือกจาก shopDataStore
+  //     const shop = shopDataStore.find((shop) => shop.id === e.value);
+
+  //     // ตรวจสอบว่า shop ไม่เป็น undefined ก่อนที่จะเข้าถึง property
+  //     if (shop) {
+  //       // เซ็ตข้อมูลร้านที่ถูกเลือกใน state
+  //       setSelectedShop(shop.salepoints_name);
+  //       setSendShop(Number(shop.id));
+  //     } else {
+  //       // กรณีไม่พบข้อมูลร้าน
+  //       console.error(`Shop with ID ${e.value} not found in shopDataStore`);
+  //     }
+  //   } else {
+  //     // กรณี e.value เป็น undefined หรือ null
+  //     setSendShop("");
+  //   }
+  // };
 
   const handleShopSelect = (e) => {
     // ตรวจสอบว่า e.value ไม่เป็น undefined หรือ null
@@ -114,7 +141,7 @@ function TaxInvoiceSub() {
   useEffect(() => {
     fetchSubInvoice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, openCreateInvoice, sendShop]);
+  }, [searchQuery, openCreateInvoice , openEditInvoice, sendShop]);
 
   useEffect(() => {
     if (tokenError) {
@@ -151,6 +178,14 @@ function TaxInvoiceSub() {
   const handleShowSub = (index) => {
     setDataViewSub(dataView?.sec_product_data[index + 1]);
   };
+
+    //------------- modal Edit Product -----------------------//
+
+    const handleModalEdit = (data) => {
+      setDataEditInvoice(data)
+      setHeadFormDataStore("3");
+      setOpenEditInvoice(true);
+    };
 
   //------------- modal Add Invoice -----------------------//
   const [headFormDataStore, setHeadFormDataStore] =
@@ -306,6 +341,15 @@ function TaxInvoiceSub() {
                       color="blue-gray"
                       className="font-bold leading-none opacity-70"
                     >
+                      แก้ไข
+                    </Typography>
+                  </th>
+                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 w-1">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-bold leading-none opacity-70"
+                    >
                       ลบ
                     </Typography>
                   </th>
@@ -367,6 +411,22 @@ function TaxInvoiceSub() {
                               ]}
                             >
                               <TbCheckupList className="h-5 w-5  text-light-blue-700 " />
+                            </IconButton>
+                          </div>
+                        </td>
+                        <td className={classes}>
+                          <div className="flex justify-center">
+                            <IconButton
+                              variant="outlined"
+                              color="amber"
+                              size="sm"
+                              className="ml-3 "
+                              onClick={() => [
+                                handleModalEdit(data),
+                                setSelectedRow(null),
+                              ]}
+                            >
+                              <BsPencilSquare className="h-5 w-5 text-yellow-900" />
                             </IconButton>
                           </div>
                         </td>

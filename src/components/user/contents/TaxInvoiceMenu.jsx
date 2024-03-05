@@ -8,15 +8,17 @@ import TaxInvoiceShort from "./taxinvoice/TaxInvoiceShort";
 import TaxInvoiceSub from "./taxinvoice/TaxInvoiceSub";
 
 import { useRecoilValue , useRecoilState } from "recoil";
-import { createInvoiceStore , companyLoginStore } from "../../../store/Store";
+import { createInvoiceStore , companyLoginStore , editInvoiceStore } from "../../../store/Store";
 
 import CreateInvoice from "./taxinvoice/CreateInvoice";
+import EditInvoice from "./taxinvoice/EditInvoice";
 
 
 function TaxInvoice() {
   //---------- Dialog  ดูข้อมูลผู้บริจาค -------------- //
   const [activeCustomerMenu, setActiveCustomerMenu] = useState("menu1");
   const openCreateInvoice = useRecoilValue(createInvoiceStore)
+  const openEditInvoice = useRecoilValue(editInvoiceStore)
 
   const [companyLoginDataStore,setCompanyLoginDataStore] = useRecoilState(companyLoginStore);
 
@@ -30,10 +32,13 @@ function TaxInvoice() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
+  console.log(openCreateInvoice)
+  console.log(openEditInvoice)
+
 
   return (
     <Card className="w-full overflow-auto  px-3">
-      <div hidden={openCreateInvoice }>
+      <div hidden={openCreateInvoice || openEditInvoice }>
       <div className=" item-center mt-5 flex w-full flex-col gap-2 md:justify-around lg:flex-row">
         <div className="flex  flex-col gap-5  lg:gap-10 xl:flex-row xl:gap-20 ">
           <div className="flex  flex-col justify-center gap-5 sm:flex-row lg:gap-20  ">
@@ -99,6 +104,12 @@ function TaxInvoice() {
       </div>
         {openCreateInvoice == true ? 
           <CreateInvoice />
+        :
+        ''
+        }
+
+        {openEditInvoice == true ? 
+          <EditInvoice />
         :
         ''
         }

@@ -27,13 +27,15 @@ import { useState, useEffect } from "react";
 import { AiFillDelete, AiOutlineStop } from "react-icons/ai";
 import { FaCheckCircle } from "react-icons/fa";
 
-import { BsFillEyeFill, BsPlusCircle } from "react-icons/bs";
+import { BsFillEyeFill, BsPlusCircle, BsPencilSquare } from "react-icons/bs";
 import { MdLocalPrintshop } from "react-icons/md";
 import { TbDoorEnter } from "react-icons/tb";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   createInvoiceStore,
+  editInvoiceStore,
+  dataEditInvoiceStore,
   // productStore,
   // customerStore,
   shopStore,
@@ -59,6 +61,10 @@ function TaxInvoiceShort() {
   const [openCreateInvoice, setOpenCreateInvoice] =
     useRecoilState(createInvoiceStore);
   const shopDataStore = useRecoilValue(shopStore);
+  const [openEditInvoice, setOpenEditInvoice] =
+  useRecoilState(editInvoiceStore);
+const [dataEditInvoice, setDataEditInvoice] =
+  useRecoilState(dataEditInvoiceStore);
 
   const shopOptions = shopDataStore?.map((shop) => ({
     value: shop.id,
@@ -111,7 +117,7 @@ function TaxInvoiceShort() {
   useEffect(() => {
     fetchShortInvoice();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, openCreateInvoice, sendShop]);
+  }, [searchQuery, openCreateInvoice , openEditInvoice, sendShop]);
 
   useEffect(() => {
     if (tokenError) {
@@ -138,6 +144,14 @@ function TaxInvoiceShort() {
   const handleModalView = (data) => {
     setOpenModalView(!openModalView);
     setDataView(data);
+  };
+
+  //------------- modal Edit Product -----------------------//
+
+  const handleModalEdit = (data) => {
+    setDataEditInvoice(data)
+    setHeadFormDataStore("2");
+    setOpenEditInvoice(true);
   };
 
   //------------- modal Add Invoice -----------------------//
@@ -278,6 +292,15 @@ function TaxInvoiceShort() {
                       color="blue-gray"
                       className="font-bold leading-none opacity-70"
                     >
+                      แก้ไข
+                    </Typography>
+                  </th>
+                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 w-1">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-bold leading-none opacity-70"
+                    >
                       ลบ
                     </Typography>
                   </th>
@@ -336,6 +359,19 @@ function TaxInvoiceShort() {
                               onClick={() => handleModalView(data)}
                             >
                               <BsFillEyeFill className="h-5 w-5  text-light-blue-700 " />
+                            </IconButton>
+                          </div>
+                        </td>
+                        <td className={classes}>
+                          <div className="flex justify-center">
+                            <IconButton
+                              variant="outlined"
+                              color="amber"
+                              size="sm"
+                              className="ml-3 "
+                              onClick={() => handleModalEdit(data)}
+                            >
+                              <BsPencilSquare className="h-5 w-5  text-yellow-900 " />
                             </IconButton>
                           </div>
                         </td>

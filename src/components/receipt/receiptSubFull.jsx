@@ -472,7 +472,7 @@ import {
                   </View>
                   <View>
                     <Text style={[styles.flexrowcenter, styles.text6, styles.mt10 ]}>
-                    จุดขาย: {dataView?.salepoints_name?.length > 1  ? dataView?.salepoints_name  : selectedShop?.salepoints_name }  {''}
+                    จุดขาย: {dataView?.salepoints_name?.length > 1  ? dataView?.salepoints_name  : selectedShop?.salepoints_name || selectedShop?.label  }  {''}
                     </Text>
                   </View>
                   <View>

@@ -274,7 +274,7 @@ const calculateTotalUnit = () => {
   return subtotal;
 };
 
-
+console.log(data)
   const [dataReceipt, setDataReceipt] = useState("");
   const [dataViewSub, setDataViewSub] = useState([]);
 

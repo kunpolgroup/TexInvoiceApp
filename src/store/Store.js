@@ -8,6 +8,14 @@ export const createInvoiceStore = atom({
     key:'keyCeateInvoice',
     default: false,
 })
+export const editInvoiceStore = atom({
+    key:'keyEditInvoice',
+    default: false,
+})
+export const dataEditInvoiceStore = atom({
+    key:'keyDataEditInvoice',
+    default: [],
+})
 export const companyStore = atom({
     key:'keyCompany',
     default: [],

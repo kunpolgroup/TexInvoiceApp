@@ -48,6 +48,29 @@ export const addSubInvioce = async (data, setOpenPrint) => {
   }
 };
 
+
+export const editSubInvioce = async (data, setOpenPrint) => {
+  try {
+    let Token = localStorage.getItem("Token");
+    const response = await axios.put(
+      `${import.meta.env.VITE_APP_API}/inovicesh/edit-cinovices/`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Token}`,
+        },
+      }
+    );
+    toast.success("สร้าง ใบกำกับภาษี(รูปแบบสัพ) สำเร็จ");
+    setOpenPrint(true);
+    console.log(response)
+    return response.data.data;
+  } catch (error) {
+    toast.error("ไม่สามารถสร้าง ใบกำกับภาษี(รูปแบบสัพ) กรุณาลองอีกครั้ง ");
+  }
+};
+
 export const deleteSubInvoice = async (id, setToastOpen) => {
   try {
     let Token = localStorage.getItem("Token");

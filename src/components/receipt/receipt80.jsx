@@ -479,7 +479,7 @@ import {
                           วันที่ขาย: {formattedDateTime || ''} {''}
                           </Text>
                           <Text style={[styles.spacesm,styles.text10 , styles.mt5]}>
-                          จุดขาย: {dataReceipt?.salepoints_name || selectedShop?.salepoints_name || ''} {''}
+                          จุดขาย: {dataReceipt?.salepoints_name || selectedShop?.salepoints_name || selectedShop?.label || ''} {''}
                           </Text>
                         </View>
                       </View>

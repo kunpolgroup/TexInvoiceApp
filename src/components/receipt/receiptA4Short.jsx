@@ -450,7 +450,7 @@ export const ReceiptA4Short = ({
                       styles.text12,
                     ]}
                   >
-                    จุดขาย: {dataReceipt?.salepoints_name || selectedShop?.salepoints_name || ''}  {''}
+                    จุดขาย: {dataReceipt?.salepoints_name || selectedShop?.salepoints_name || selectedShop?.label}  {''}
                   </Text>
                 </View>
                 <View>
